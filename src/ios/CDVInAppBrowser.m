@@ -601,7 +601,11 @@
     // the advantage of using UIBarButtonSystemItemDone is the system will localize it for you automatically
     // but, if you want to set this yourself, knock yourself out (we can't set the title for a system Done button, so we have to create a new one)
     self.closeButton = nil;
+#ifdef __IPHONE_8_0
+    self.closeButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:@selector(close)];
+#else
     self.closeButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleBordered target:self action:@selector(close)];
+#endif
     self.closeButton.enabled = YES;
     self.closeButton.tintColor = [UIColor colorWithRed:60.0 / 255.0 green:136.0 / 255.0 blue:230.0 / 255.0 alpha:1];
 
